@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <input type="text" v-model="name">
-    <input type="text" v-model="lastname">
-    <p>{{fullName}}</p>
+    <button v-on:click="format">Format</button>
+    <p>{{formattedName}}</p>
   </div>
 </template>
 
@@ -13,19 +13,16 @@ export default {
   data() {
     return {
       name: "",
-      lastname: ""
+      formattedName: ""
     };
   },
 
-  computed: {
-    fullName() {
-      return `${this.name} ${this.lastname}`;
-    }
-  },
-
-  watch: {
-    name(newVal, oldVal) {
-      console.log(newVal, oldVal);
+  methods: {
+    format() {
+      this.formattedName = this.name
+        .split(" ")
+        .join("-")
+        .toUpperCase();
     }
   }
 };
