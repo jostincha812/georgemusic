@@ -21,15 +21,20 @@
               </button>
             </div>
           </div>
-          <p>
-            <small>{{searchMessage}}</small>
-          </p>
         </div>
       </nav>
 
+      <p>
+        <small>{{searchMessage}}</small>
+      </p>
+
       <div class="container results">
         <div class="columns">
-          <div class="column" v-for="(t) in tracks" v-bind:key="t.index">{{t.name}} {{ t.artist}}</div>
+          <div
+            class="column"
+            v-for="(t) in tracks"
+            v-bind:key="t.index"
+          >{{t.name}} - {{ t.artists[0].name}}</div>
         </div>
       </div>
     </section>
@@ -37,15 +42,7 @@
 </template>
 
 <script>
-import track from "./services/track";
-
-console.log(track);
-
-const tracks = [
-  { name: "Cancion 1", artist: "Artista 1" },
-  { name: "Cancion 2", artist: "Artista 2" },
-  { name: "Cancion 3", artist: "Artista 3" }
-];
+import trackService from "./services/track";
 
 export default {
   name: "app",
@@ -59,8 +56,12 @@ export default {
 
   methods: {
     search() {
-      this.tracks = tracks;
-      console.log(this.searchQuery);
+      if (!this.searchQuery) {
+        return;
+      }
+      trackService(this.searchQuery).then(data => {
+        this.tracks = data.tracks.items;
+      });
     }
   },
 

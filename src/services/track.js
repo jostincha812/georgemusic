@@ -1,29 +1,11 @@
-const axios = require("axios");
 import platziMusicService from "./platzi-music";
 
-const trackService = {};
-
-trackService.search = q => {
-  const type = "track";
-  // Optionally the request above could also be done as
-  axios
-    .get(`${platziMusicService.baseUrl}/search`, {
-      params: {
-        q,
-        type
-      }
-    })
-    .then(response => {
-      return response;
-      // console.log(response);
-    })
-    .catch(error => {
-      return error;
-      // console.log(error);
-    })
-    .then(() => {
-      // always executed
-    });
-};
+async function trackService(query) {
+  let response = await fetch(
+    `${platziMusicService.baseUrl}/search?q=${query}&type=track`
+  );
+  let data = await response.json();
+  return data;
+}
 
 export default trackService;
