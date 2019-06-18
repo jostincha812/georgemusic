@@ -37,6 +37,10 @@
 </template>
 
 <script>
+import track from "./services/track";
+
+console.log(track);
+
 const tracks = [
   { name: "Cancion 1", artist: "Artista 1" },
   { name: "Cancion 2", artist: "Artista 2" },
