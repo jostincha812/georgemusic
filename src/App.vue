@@ -1,9 +1,12 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <h1>{{ mensaje }}</h1>
-      <p>{{ 1 + 1}}</p>
-    </div>
+    <p v-show="showValue">{{value}}</p>
+    <p v-if="showValue">{{value}}</p>
+    <p v-else-if="false">{{'otra cosa'}}</p>
+    <p v-else>{{ 'Algo mas' }}</p>
+    <ul>
+      <li v-for="item in items" v-bind:key="item">{{item}}</li>
+    </ul>
   </div>
 </template>
 
@@ -13,7 +16,10 @@ export default {
 
   data() {
     return {
-      mensaje: "Hola Mundo"
+      mensaje: "Hola Mundo",
+      showValue: false,
+      value: "Algo",
+      items: [1, 2, 3, 4, 5]
     };
   }
 };
