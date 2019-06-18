@@ -1,28 +1,68 @@
 <template>
   <div id="app">
-    <input type="text" v-model="name">
-    <button v-on:click="format">Format</button>
-    <p>{{formattedName}}</p>
+    <section class="section">
+      <nav class="nav has-shadow">
+        <div class="container">
+          <div class="field is-grouped">
+            <div class="control is-expanded">
+              <input
+                type="text"
+                class="input is-medium is-rounded is-primary"
+                placeholder="Buscar Canciones"
+                v-model="searchQuery"
+              >
+            </div>
+            <div class="control">
+              <button class="button is-medium is-info" v-on:click="search">
+                <strong>Buscar</strong>
+              </button>
+              <button class="button is-medium is-danger">
+                <strong>&times;</strong>
+              </button>
+            </div>
+          </div>
+          <p>
+            <small>{{searchMessage}}</small>
+          </p>
+        </div>
+      </nav>
+
+      <div class="container results">
+        <div class="columns">
+          <div class="column" v-for="(t) in tracks" v-bind:key="t.index">{{t.name}} {{ t.artist}}</div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
+const tracks = [
+  { name: "Cancion 1", artist: "Artista 1" },
+  { name: "Cancion 2", artist: "Artista 2" },
+  { name: "Cancion 3", artist: "Artista 3" }
+];
+
 export default {
   name: "app",
 
   data() {
     return {
-      name: "",
-      formattedName: ""
+      searchQuery: "",
+      tracks: []
     };
   },
 
   methods: {
-    format() {
-      this.formattedName = this.name
-        .split(" ")
-        .join("-")
-        .toUpperCase();
+    search() {
+      this.tracks = tracks;
+      console.log(this.searchQuery);
+    }
+  },
+
+  computed: {
+    searchMessage() {
+      return `Emcontrados ${this.tracks.length}`;
     }
   }
 };
@@ -31,4 +71,7 @@ export default {
 
 <style lang="scss">
 @import "./scss/main.scss";
+.results {
+  margin-top: 20px;
+}
 </style>
