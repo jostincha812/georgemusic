@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <pm-header></pm-header>
-    <section class="section">
+    <pm-loader v-show="isLoading"></pm-loader>
+    <section class="section" v-show="!isLoading">
       <nav class="nav has-shadow">
         <div class="container">
           <div class="field is-grouped">
@@ -15,7 +16,7 @@
             </div>
             <div class="control">
               <button class="button is-medium is-info" v-on:click="search">
-                <strong>Buscar</strong>
+                <strong>🔎</strong>
               </button>
               <button class="button is-medium is-danger">
                 <strong>&times;</strong>
@@ -30,12 +31,10 @@
       </p>
 
       <div class="container results">
-        <div class="columns">
-          <div
-            class="column"
-            v-for="(t) in tracks"
-            v-bind:key="t.index"
-          >{{t.name}} - {{ t.artists[0].name}}</div>
+        <div class="columns is-multiline">
+          <div class="column is-one-quarter" v-for="track in tracks" v-bind:key="track.index">
+            <pm-track v-bind:track="track"></pm-track>
+          </div>
         </div>
       </div>
     </section>
@@ -47,18 +46,23 @@
 import trackService from "./services/track";
 import PmFooter from "./components/layout/Footer.vue";
 import PmHeader from "./components/layout/Header.vue";
+import PmTrack from "./components/Track.vue";
+import PmLoader from "./components/shared/shared/Loader.vue";
 
 export default {
   name: "app",
   components: {
     PmFooter,
-    PmHeader
+    PmHeader,
+    PmTrack,
+    PmLoader
   },
 
   data() {
     return {
       searchQuery: "",
-      tracks: []
+      tracks: [],
+      isLoading: false
     };
   },
 
@@ -67,8 +71,10 @@ export default {
       if (!this.searchQuery) {
         return;
       }
+      this.isLoading = true;
       trackService(this.searchQuery).then(data => {
         this.tracks = data.tracks.items;
+        this.isLoading = false;
       });
     }
   },
