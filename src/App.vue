@@ -1,12 +1,8 @@
 <template>
   <div id="app">
-    <p v-show="showValue">{{value}}</p>
-    <p v-if="showValue">{{value}}</p>
-    <p v-else-if="false">{{'otra cosa'}}</p>
-    <p v-else>{{ 'Algo mas' }}</p>
-    <ul>
-      <li v-for="item in items" v-bind:key="item">{{item}}</li>
-    </ul>
+    <input type="text" v-model="name">
+    <p>{{name}}</p>
+    <a v-bind:href="url">Link</a>
   </div>
 </template>
 
@@ -16,10 +12,8 @@ export default {
 
   data() {
     return {
-      mensaje: "Hola Mundo",
-      showValue: false,
-      value: "Algo",
-      items: [1, 2, 3, 4, 5]
+      name: "",
+      url: "https://google.com"
     };
   }
 };
