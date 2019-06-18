@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <input type="text" v-model="name">
-    <p>{{name}}</p>
-    <a v-bind:href="url">Link</a>
+    <input type="text" v-model="lastname">
+    <p>{{fullName}}</p>
   </div>
 </template>
 
@@ -13,8 +13,14 @@ export default {
   data() {
     return {
       name: "",
-      url: "https://google.com"
+      lastname: ""
     };
+  },
+
+  computed: {
+    fullName() {
+      return `${this.name} ${this.lastname}`;
+    }
   }
 };
 </script>
