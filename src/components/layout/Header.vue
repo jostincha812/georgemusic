@@ -16,7 +16,19 @@
       <div class="content has-text-centered">
         <h1 class="title">George Music</h1>
         <h1 class="subtitle">Canciones Vue-nisimas</h1>
+        <pm-player></pm-player>
       </div>
     </div>
   </section>
 </template>
+
+<script>
+import PmPlayer from "../Player.vue";
+
+export default {
+  components: {
+    PmPlayer
+  }
+};
+</script>
+

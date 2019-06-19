@@ -39,9 +39,10 @@ export default {
     track: { type: Object, required: true }
   },
 
-  methods:{
+  methods: {
     selectTrack() {
-      this.$emit('select', this.track.id);
+      this.$emit("select", this.track.id);
+      this.$bus.$emit("set-track", this.track);
     }
   }
 };
