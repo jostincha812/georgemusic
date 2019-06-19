@@ -33,7 +33,7 @@
       <div class="container results">
         <div class="columns is-multiline">
           <div class="column is-one-quarter" v-for="track in tracks" v-bind:key="track.index">
-            <pm-track v-bind:track="track"></pm-track>
+            <pm-track v-bind:track="track" v-on:select="setSeletedTrack" v-bind:class="{ 'is-active' : track.id == selectedTrack }"></pm-track>
           </div>
         </div>
       </div>
@@ -62,7 +62,8 @@ export default {
     return {
       searchQuery: "",
       tracks: [],
-      isLoading: false
+      isLoading: false,
+      selectedTrack: ""
     };
   },
 
@@ -76,6 +77,9 @@ export default {
         this.tracks = data.tracks.items;
         this.isLoading = false;
       });
+    },
+    setSeletedTrack(id) {
+      this.selectedTrack = id;
     }
   },
 
@@ -90,7 +94,12 @@ export default {
 
 <style lang="scss">
 @import "./scss/main.scss";
+
 .results {
   margin-top: 20px;
+}
+
+.is-active {
+  border: 3px #23d160 solid;
 }
 </style>
