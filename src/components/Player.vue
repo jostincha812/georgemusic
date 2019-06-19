@@ -1,7 +1,7 @@
 <template>
-  <div class="content">
+  <div class="content" v-if="track && track.album">
     <p class="is-128x128">
-      <img v-bind:src="track.album.images[0].url" alt="sss">
+      <img v-bind:src="track.album.images[0].url">
     </p>
     <p>
       <strong>{{track.name}}</strong>
