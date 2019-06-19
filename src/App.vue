@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <pm-header></pm-header>
+    <pm-notificaion v-show="showNotification">
+      <p slot="body">No se encontraron resultados</p>  
+    </pm-notificaion>    
     <pm-loader v-show="isLoading"></pm-loader>
     <section class="section" v-show="!isLoading">
       <nav class="nav has-shadow">
@@ -47,7 +50,9 @@ import trackService from "./services/track";
 import PmFooter from "./components/layout/Footer.vue";
 import PmHeader from "./components/layout/Header.vue";
 import PmTrack from "./components/Track.vue";
-import PmLoader from "./components/shared/shared/Loader.vue";
+import PmLoader from "./components/shared/Loader.vue";
+import PmNotificaion from "./components/shared/Notification.vue";
+import { setTimeout } from 'timers';
 
 export default {
   name: "app",
@@ -55,7 +60,8 @@ export default {
     PmFooter,
     PmHeader,
     PmTrack,
-    PmLoader
+    PmLoader,
+    PmNotificaion
   },
 
   data() {
@@ -63,6 +69,7 @@ export default {
       searchQuery: "",
       tracks: [],
       isLoading: false,
+      showNotification: false,
       selectedTrack: ""
     };
   },
@@ -74,6 +81,7 @@ export default {
       }
       this.isLoading = true;
       trackService(this.searchQuery).then(data => {
+        this.showNotification = data.tracks.total === 0;
         this.tracks = data.tracks.items;
         this.isLoading = false;
       });
@@ -86,6 +94,16 @@ export default {
   computed: {
     searchMessage() {
       return `Emcontrados ${this.tracks.length}`;
+    }
+  },
+
+  watch: {
+    showNotification() {
+      if (this.showNotification) {
+        setTimeout(() => {
+          this.showNotification = false;
+        }, 3000);
+      }
     }
   }
 };
