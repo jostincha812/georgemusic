@@ -3,14 +3,18 @@
     <div class="hero-head">
       <header class="nav">
         <div class="container">
-          <div class="nav-left">
+          <div class="nav-left is-pulled-left">
             <div class="nav-item">
-              <strong>💻 George Music</strong>
+              <strong class="has-text-grey-dark">💻 George Music</strong>
             </div>
           </div>
-          <div class="nav-right nav-menu">
-            <router-link class="nav-item" to="/">Buscar</router-link>
-            <router-link class="nav-item" to="about">Nosotros</router-link>
+          <div class="nav-right is-pulled-right">
+            <router-link class="nav-item has-text-grey-dark mr-25" to="/">
+              <strong>🔎 Buscar</strong>
+            </router-link>
+            <router-link class="nav-item has-text-grey-dark mr-25" to="about">
+              <strong>👤 Nosotros</strong>
+            </router-link>
           </div>
         </div>
       </header>
@@ -34,4 +38,10 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.mr-25 {
+  margin-right: 25px;
+}
+</style>
 
