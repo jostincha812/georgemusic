@@ -14,6 +14,7 @@
                 class="input is-medium is-rounded is-primary"
                 placeholder="Buscar Canciones"
                 v-model="searchQuery"
+                v-on:keyup.enter="search"
               >
             </div>
             <div class="control">
