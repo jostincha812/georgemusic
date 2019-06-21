@@ -37,6 +37,7 @@
         <div class="columns is-multiline">
           <div class="column is-one-quarter" v-for="track in tracks" v-bind:key="track.index">
             <pm-track
+              v-blur="track.preview_url"
               v-bind:track="track"
               v-on:select="setSeletedTrack"
               v-bind:class="{ 'is-active' : track.id == selectedTrack }"
