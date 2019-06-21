@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-if="track && track.album">
     <div class="columns">
       <div class="column is-3 has-text-centered">
         <figure class="media-left">
