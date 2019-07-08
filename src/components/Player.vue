@@ -8,8 +8,7 @@
       <small>[{{track.duration_ms | ms-to-mm}}]</small>
     </p>
     <p>
-      <audio controls>
-        <source v-bind:src="track.preview_url" type="audio/ogg">
+      <audio controls v-bind:src="track.preview_url">
       </audio>
     </p>
   </div>
