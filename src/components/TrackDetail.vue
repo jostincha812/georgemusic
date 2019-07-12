@@ -6,9 +6,9 @@
           <p class="image">
             <img v-bind:src="track.album.images[0].url">
           </p>
-          <p>
+          <p class="mt-20">
             <a class="button is-primary is-large">
-              <span class="icon" v-on:click="selectTrack"></span>
+              <span class="icon" v-on:click="selectTrack">▶</span>
             </a>
           </p>
         </figure>
@@ -18,7 +18,7 @@
           <div class="panel-heading">
             <h1 class="title">{{track.name}}</h1>
           </div>
-          <div class="panel-block">
+          <!-- <div class="panel-block">
             <article class="media">
               <div class="media-content">
                 <div class="content">
@@ -38,7 +38,7 @@
                 </div>
               </nav>
             </article>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -70,5 +70,8 @@ export default {
 <style lang="scss" scoped>
 .column {
   margin: 20px;
+}
+.mt-20 {
+  margin-top: 20px;
 }
 </style>
