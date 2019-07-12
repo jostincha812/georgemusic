@@ -4,7 +4,7 @@
       <img v-bind:src="track.album.images[0].url">
     </p>
     <p>
-      <strong>{{track.name}}</strong>
+      <strong>{{track.name}} </strong>
       <small>[{{track.duration_ms | ms-to-mm}}]</small>
     </p>
     <p>
@@ -34,5 +34,8 @@ export default {
 img {
   width: 124px;
   border-radius: 50%;
+}
+strong {
+  color: #ffffff;
 }
 </style>

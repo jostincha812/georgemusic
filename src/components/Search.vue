@@ -15,17 +15,17 @@
             <div class="control is-expanded">
               <input
                 type="text"
-                class="input is-medium is-rounded is-primary"
+                class="input is-medium is-rounded is-primary border-b"
                 placeholder="Buscar Canciones"
                 v-model="searchQuery"
                 v-on:keyup.enter="search"
               >
             </div>
             <div class="control">
-              <button class="button is-medium is-info" v-on:click="search">
+              <button class="button is-medium is-info pr" v-on:click="search">
                 <strong>🔎</strong>
               </button>
-              <button class="button is-medium is-danger">
+              <button class="button is-medium is-danger cancel">
                 <strong>&times;</strong>
               </button>
             </div>
@@ -119,6 +119,16 @@ export default {
 }
 
 .is-active {
-  border: 3px #23d160 solid;
+  border: 3px #321021 solid;
+}
+.pr {
+  margin-right: 7px;
+  background-color: #321021 !important;
+}
+.cancel {
+  background-color: #fd4257 !important;
+}
+.border-b {
+  border-color: #50162e !important;
 }
 </style>

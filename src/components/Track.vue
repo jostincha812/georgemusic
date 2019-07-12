@@ -20,13 +20,11 @@
         </div>
       </div>
       <div class="content">
-        <small>{{track.duration_ms | ms-to-mm}}</small>
         <nav class="level">
           <div class="level-left">
-            <button class="level-item button is-primary">
-              <small class="icon is-small" v-on:click="selectTrack">▶️</small>
-            </button>
-            <button class="level-item button is-warning">
+            <button class="level-item button bg">
+              <small class="mr">{{track.duration_ms | ms-to-mm}} Minutos</small>
+              <small class="icon is-small mr" v-on:click="selectTrack">▶️</small>
               <small class="icon is-small" v-on:click="goToTrack(track.id)">🎵</small>
             </button>
           </div>
@@ -59,3 +57,12 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.mr {
+  margin-right: 25px;
+}
+.bg {
+  background-color: #ff3861;
+}
+</style>

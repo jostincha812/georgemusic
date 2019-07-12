@@ -1,6 +1,6 @@
 <template>
   <section class="hero is-success">
-    <div class="hero-head">
+    <!-- <div class="hero-head">
       <header class="nav">
         <div class="container">
           <div class="nav-left is-pulled-left">
@@ -18,11 +18,11 @@
           </div>
         </div>
       </header>
-    </div>
+    </div> -->
     <div class="hero-body">
       <div class="content has-text-centered">
         <h1 class="title">George Music</h1>
-        <h1 class="subtitle">Canciones Vue-nisimas</h1>
+        <!-- <h1 class="subtitle">Canciones Vue-nisimas</h1> -->
         <pm-player></pm-player>
       </div>
     </div>
@@ -42,6 +42,12 @@ export default {
 <style lang="scss" scoped>
 .mr-25 {
   margin-right: 25px;
+}
+.is-success {
+  // background-color: #041826 !important;
+  background-image: url("https://cdn.macrumors.com/article-new/2018/05/apple-music-note-800x420.jpg") !important;
+  // background-repeat: no-repeat, repeat !important;
+  background-color: #cccccc;
 }
 </style>
 

@@ -30,4 +30,13 @@ export default {
 .is-active {
   border: 3px #23d160 solid;
 }
+
+body {
+  background: #e9e3e3;
+}
+
+footer {
+  background: #130512 !important;
+  color: #ffffff !important;
+}
 </style>
