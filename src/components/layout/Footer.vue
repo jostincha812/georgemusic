@@ -10,10 +10,11 @@
 
 <style lang="scss" scoped>
 .end {
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    margin-bottom: 0px;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+  padding: 10px;
 }
 </style>
