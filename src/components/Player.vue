@@ -8,7 +8,7 @@
       <small>[{{track.duration_ms | ms-to-mm}}]</small>
     </p>
     <p>
-      <audio controls v-bind:src="track.preview_url">
+      <audio controls autoplay v-bind:src="track.preview_url">
       </audio>
     </p>
   </div>
